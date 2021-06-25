@@ -5,14 +5,13 @@ const ApiError = require(`../exceptions/api-error`)
 class UserController {
     async registration(req, res, next) {
         try {
+            console.log("регистрация.............")
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest(`ошибка валидации`, errors.array()))
-
             }
-
-            const {email, password} = req.body
-            const userDate = await userService.registration(email, password)
+            const {email, password,name} = req.body
+            const userDate = await userService.registration(email, password, name)
             res.cookie(`refreshToken`, userDate.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             return res.json(userDate)
         } catch (e) {
@@ -22,24 +21,25 @@ class UserController {
 
     async login(req, res, next) {
         try {
+            console.log("пользователь зашел")
             const {email, password} = req.body;
             const userData = await userService.login(email, password)
             res.cookie(`refreshToken`, userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             return res.json(userData)
-
         } catch (e) {
             next(e)
-
         }
     }
 
     async logout(req, res, next) {
         try {
+            console.log(`пользователь вышел0`)
             const {refreshToken} = req.cookies
             const token = await userService.logout(refreshToken)
+            console.log(`пользователь вышел1`)
             res.clearCookie(`refreshToken`)
-            return res.json(token)
 
+            return res.json(token)
         } catch (e) {
             next(e)
         }
@@ -68,13 +68,16 @@ class UserController {
 
     async getUsers(req, res, next) {
         try {
-
             const users = await userService.getAllUsers()
-
-
-
             await res.json(users)
-
+        } catch (e) {
+            next(e)
+        }
+    }
+    async getUserProfile(req, res, next){
+        try {
+            const userProfile = await userService.getAllUsers()
+            await res.json(users)
         } catch (e) {
             next(e)
         }

@@ -1,29 +1,35 @@
 const UserModel = require(`../models/user-model`)
+const ProfileModel = require(`../models/profile-model`)
 const bcrypt = require(`bcrypt`)
 const uuid = require(`uuid`)
 const mailService = require(`../service/mail-service`)
 const tokenService = require(`../service/token-service`)
 const UserDto = require(`../dtos/user-dto`)
+const ProfileDto = require(`../dtos/profile-dto`)
 const ApiError = require(`../exceptions/api-error`)
 
 
 class UserService {
-    async registration(email, password) {
+    async registration(email, password, name) {
         const candidate = await UserModel.findOne({email})
-        const ff = ""
         if (candidate) {
-            /*console.log(candidate)*/
             throw ApiError.BadRequest(`пользователь с таким email:${email} уже зарегистрирован`,)
         }
         const hashPassword = await bcrypt.hash(password, 3)
         const activationLink = uuid.v4()
         const user = await UserModel.create({email, password: hashPassword, activationLink})
+        const profile = await ProfileModel.create({
+            name, _id: user._id, status: `I am a new user`, photo: "", gameSBState: {
+                numberOfGamesSB: 0,
+                numberOfWinsSB: 0,
+            }
+        })
         await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
-
         const userDto = new UserDto(user)
+        const profileDto = new ProfileDto(profile)
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return {...tokens, user: userDto}
+        return {...tokens, user: userDto, profile: profileDto}
     }
 
     async activate(activationLink) {
@@ -46,10 +52,12 @@ class UserService {
         if (!isPassEquals) {
             throw ApiError.BadRequest("некорректный пароль")
         }
+        const profile = await ProfileModel.findById(user._id)
+        const profileDto = new ProfileDto(profile)
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return {...tokens, user: userDto}
+        return {...tokens, user: userDto,profile: profileDto}
 
     }
 
@@ -68,15 +76,16 @@ class UserService {
             throw ApiError.UnauthorizedError()
         }
         const user = await UserModel.findById(userData.id)
+        const profile = await ProfileModel.findById(userData.id)
+        const profileDto = new ProfileDto(profile)
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return {...tokens, user: userDto}
+        return {...tokens, user: userDto,profile: profileDto}
     }
-
     async getAllUsers() {
         const users = await UserModel.find()
-        return users.map(u=>{
+        return users.map(u => {
             return new UserDto(u)
         })
     }

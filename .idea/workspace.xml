@@ -11,21 +11,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exceptions/api-error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/auth-middleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/error-middleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/token-model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/mail-service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/token-service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/profile-controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dtos/profile-dto.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/checkForSingleShipInput.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/deleteShipFromTheMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/killShip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/setShip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/setShot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/profile-model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service/profile-service.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/token-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/token-model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +57,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.4" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,9 +67,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\controllers" />
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle" />
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\dtos" />
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\models" />
       <recent name="E:\Proect_node\jwt-server-end" />
     </key>
   </component>
@@ -78,6 +89,9 @@
       <option name="presentableId" value="Default" />
       <updated>1624513766184</updated>
       <workItem from="1624513767323" duration="15232000" />
+      <workItem from="1624598521405" duration="14139000" />
+      <workItem from="1624621371822" duration="5828000" />
+      <workItem from="1624627329559" duration="1538000" />
     </task>
     <servers />
   </component>
@@ -94,6 +108,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="197" key="run.anything.popup" timestamp="1624517081398">
