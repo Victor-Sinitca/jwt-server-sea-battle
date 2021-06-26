@@ -30,15 +30,20 @@ const start = async () => {
     try {
         await mongoose.connect(process.env.BD_URL, {
             useNewUrlParser: true,
-            useUnifiedTopology: true
+            useUnifiedTopology: true,
+            useCreateIndex:true,
         })
         webSocketServer.on('connection',  async (ws, url,) => {
-            const token = url.url.split("=")[1]
-            const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
-            await  getWs(ws,url,user)
+            try{
+                const token = url.url.split("=")[1]
+                const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+                await  getWs(ws,url,user)
+            }catch (e) {
+                console.log(`ошибка webSocketServer: ${e}`)
+            }
         });
         app.listen(PORT, () => console.log(`сервер стартанул порт: ${PORT}`))
-        server.listen(PORT,`192.168.35.2`,  () => console.log(`сервер стартанул порт: ${PORT}`))
+        server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))
 
     } catch (e) {
         console.log(e)

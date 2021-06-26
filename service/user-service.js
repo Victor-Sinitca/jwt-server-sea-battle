@@ -4,8 +4,6 @@ const bcrypt = require(`bcrypt`)
 const uuid = require(`uuid`)
 const mailService = require(`../service/mail-service`)
 const tokenService = require(`../service/token-service`)
-const UserDto = require(`../dtos/user-dto`)
-const ProfileDto = require(`../dtos/profile-dto`)
 const ApiError = require(`../exceptions/api-error`)
 
 
@@ -25,8 +23,8 @@ class UserService {
             }
         })
         await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
-        const userDto = new UserDto(user)
-        const profileDto = new ProfileDto(profile)
+        const userDto = user.getUser()
+        const profileDto = profile.getProfile()
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens, user: userDto, profile: profileDto}
@@ -37,10 +35,8 @@ class UserService {
         if (!user) {
             throw ApiError.BadRequest("некорректная ссылка для активации")
         }
-        user.isActivated = true
+        user.setIsActivated(true)
         await user.save()
-
-
     }
 
     async login(email, password) {
@@ -53,8 +49,8 @@ class UserService {
             throw ApiError.BadRequest("некорректный пароль")
         }
         const profile = await ProfileModel.findById(user._id)
-        const profileDto = new ProfileDto(profile)
-        const userDto = new UserDto(user)
+        const userDto = user.getUser()
+        const profileDto = profile.getProfile()
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens, user: userDto,profile: profileDto}
@@ -62,8 +58,7 @@ class UserService {
     }
 
     async logout(refreshToken) {
-        const token = await tokenService.removeToken(refreshToken)
-        return token
+        return await tokenService.removeToken(refreshToken)
     }
 
     async refresh(refreshToken) {
@@ -77,8 +72,8 @@ class UserService {
         }
         const user = await UserModel.findById(userData.id)
         const profile = await ProfileModel.findById(userData.id)
-        const profileDto = new ProfileDto(profile)
-        const userDto = new UserDto(user)
+        const userDto = user.getUser()
+        const profileDto = profile.getProfile()
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens, user: userDto,profile: profileDto}
@@ -86,9 +81,8 @@ class UserService {
     async getAllUsers() {
         const users = await UserModel.find()
         return users.map(u => {
-            return new UserDto(u)
+            return u.getUser()
         })
     }
 }
-
 module.exports = new UserService()

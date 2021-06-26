@@ -30,6 +30,9 @@ const setShot = (state,firstUser, sector) => {
             stateCopy.FUTurn = {...state.FUTurn}
             stateCopy.FUTurn.turn = !stateCopy.FUTurn.turn; //передача хода
         }
+
+
+
         return stateCopy
     } else return state //если уже стреляли по сектору - ничего не делаем и продолжаем стрельбу
 }

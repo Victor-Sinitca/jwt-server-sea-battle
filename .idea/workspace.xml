@@ -11,26 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/profile-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dtos/profile-dto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicsGame/checkForSingleShipInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicsGame/deleteShipFromTheMap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicsGame/killShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicsGame/setShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logicsGame/setShot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/profile-model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/service/profile-service.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logicsGame/commonLogic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtos/profile-dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicsGame/setShot.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/setShot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/profile-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/profile-model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/token-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/token-model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/user-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +84,7 @@
       <workItem from="1624598521405" duration="14139000" />
       <workItem from="1624621371822" duration="5828000" />
       <workItem from="1624627329559" duration="1538000" />
+      <workItem from="1624688411687" duration="14923000" />
     </task>
     <servers />
   </component>
@@ -111,6 +104,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624689065585">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1624689065585" />
     <state x="475" y="197" key="run.anything.popup" timestamp="1624517081398">
       <screen x="99" y="0" width="1437" height="864" />
     </state>

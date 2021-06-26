@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 const {v1} = require('uuid');
 const setShot = require('../logicsGame/setShot');
 const setShip = require('../logicsGame/setShip');
-const checkForShipInput = require('../logicsGame/checkForSingleShipInput');
 const deleteShipFromTheMap = require('../logicsGame/deleteShipFromTheMap');
+const commonLogic = require('../logicsGame/commonLogic')
+const Profile = mongoose.model('Profile');
 
 
 let clients = {};
@@ -12,84 +13,8 @@ let invitationsInGames = []
 let gameRooms = []
 let startedGames = []
 
-const Profile = mongoose.model('Profile');
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-const initMap = () => {
-    let map = Array.from(Array(10), () => new Array(10))
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-            map[i][j] = {
-                sector: {
-                    ship: false,
-                    shot: false,
-                    x: j,
-                    y: i,
-                    unlock: false,
-                    img: null
-                }
-            }
-        }
-    }
-    return map
-}
-const createGame = (gameId, firstUser, secondUser) => {
-    return {
-        gameId: gameId,
-        firstUser: firstUser,
-        secondUser: secondUser,
-        gameData: {
-            FUMap: initMap(),
-            SUMap: initMap(),
-            FUTurn: {
-                turn: true
-            },
-            FUShips: {
-                ship1: 4,
-                ship2: 3,
-                ship3: 2,
-                ship4: 1,
-                numberShips1: 4,
-                numberShips2: 3,
-                numberShips3: 2,
-                numberShips4: 1,
-            },
-            SUShips: {
-                ship1: 4,
-                ship2: 3,
-                ship3: 2,
-                ship4: 1,
-                numberShips1: 4,
-                numberShips2: 3,
-                numberShips3: 2,
-                numberShips4: 1,
-            },
-            settingShipUser: {
-                firstUser: true,
-                secondUser: true,
-            },
-        }
-    }
-}
-const createGameRoom = (game, profile) => {
-    return {
-        firstUser: {
-            id: game.userId,
-            name: game.userName
-        },
-        secondUser: {
-            id: profile.id,
-            name: profile.name
-        },
-        gamesRoomId: v1()
-    }
-}
-
-
-const getWs = async (ws, url,user) => {
+const getWs = async (ws, url, user) => {
     console.log(user)
     clients[user.id] = {
         id: user.id,
@@ -180,8 +105,8 @@ const getWs = async (ws, url,user) => {
             invitationsInGames = invitationsInGames.filter(game => {
                 if (game.id === newMessageDate.date.id
                     && game.userId !== user.id) {
-                    const gameRoom = createGameRoom(game, profile)
-                    const newGame = createGame(gameRoom.gamesRoomId, gameRoom.firstUser, gameRoom.secondUser)
+                    const gameRoom = commonLogic.createGameRoom(game, profile)
+                    const newGame = commonLogic.createGame(gameRoom.gamesRoomId, gameRoom.firstUser, gameRoom.secondUser)
                     gameRooms.push(gameRoom)
                     startedGames.push(newGame)
                     for (let key in clients) {
@@ -265,7 +190,7 @@ const getWs = async (ws, url,user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
-                    item.gameData = deleteShipFromTheMap(item.gameData,newMessageDate.date.sector,true)
+                    item.gameData = deleteShipFromTheMap(item.gameData, newMessageDate.date.sector, true)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -273,7 +198,7 @@ const getWs = async (ws, url,user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.secondUser.id) === item.gameData.settingShipUser.secondUser)) {
-                    item.gameData = item.gameData = deleteShipFromTheMap(item.gameData,newMessageDate.date.sector,false)
+                    item.gameData = item.gameData = deleteShipFromTheMap(item.gameData, newMessageDate.date.sector, false)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -292,27 +217,7 @@ const getWs = async (ws, url,user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
-                    item.gameData.FUMap = initMap()
-                    item.gameData.FUShips = {
-                        ship1: 4,
-                        ship2: 3,
-                        ship3: 2,
-                        ship4: 1,
-                        numberShips1: 4,
-                        numberShips2: 3,
-                        numberShips3: 2,
-                        numberShips4: 1,
-                    }
-                    let horizon = true;
-                    let shipInputState = [];
-                    for (let shipValue = 4; shipValue >= 1; shipValue--) {
-                        for (let numberOfShips = shipValue; numberOfShips <= 4; numberOfShips++) {
-                            horizon = Boolean(getRandomInt(2))
-                            shipInputState = checkForShipInput(item.gameData.FUMap, horizon, shipValue, false).shipInputState;
-                            item.gameData = setShip(item.gameData, true, shipInputState[getRandomInt(shipInputState.length)],
-                                horizon, shipValue)
-                        }
-                    }
+                    commonLogic.setShipRandom(item, true)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -320,28 +225,7 @@ const getWs = async (ws, url,user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.secondUser.id) && item.gameData.settingShipUser.secondUser) {
-
-                    item.gameData.SUMap = initMap()
-                    item.gameData.SUShips = {
-                        ship1: 4,
-                        ship2: 3,
-                        ship3: 2,
-                        ship4: 1,
-                        numberShips1: 4,
-                        numberShips2: 3,
-                        numberShips3: 2,
-                        numberShips4: 1,
-                    }
-                    let horizon = true;
-                    let shipInputState = [];
-                    for (let shipValue = 4; shipValue >= 1; shipValue--) {
-                        for (let numberOfShips = shipValue; numberOfShips <= 4; numberOfShips++) {
-                            horizon = Boolean(getRandomInt(2))
-                            shipInputState = checkForShipInput(item.gameData.SUMap, horizon, shipValue, false).shipInputState;
-                            item.gameData = setShip(item.gameData, false, shipInputState[getRandomInt(shipInputState.length)],
-                                horizon, shipValue)
-                        }
-                    }
+                    commonLogic.setShipRandom(item, false)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -360,17 +244,8 @@ const getWs = async (ws, url,user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
-                    item.gameData.FUMap = initMap()
-                    item.gameData.FUShips = {
-                        ship1: 4,
-                        ship2: 3,
-                        ship3: 2,
-                        ship4: 1,
-                        numberShips1: 4,
-                        numberShips2: 3,
-                        numberShips3: 2,
-                        numberShips4: 1,
-                    }
+                    item.gameData.FUMap = commonLogic.initMap()
+                    item.gameData.FUShips = commonLogic.initUShips()
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -378,17 +253,8 @@ const getWs = async (ws, url,user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.secondUser.id) && item.gameData.settingShipUser.secondUser) {
-                    item.gameData.SUMap = initMap()
-                    item.gameData.SUShips = {
-                        ship1: 4,
-                        ship2: 3,
-                        ship3: 2,
-                        ship4: 1,
-                        numberShips1: 4,
-                        numberShips2: 3,
-                        numberShips3: 2,
-                        numberShips4: 1,
-                    }
+                    item.gameData.SUMap = commonLogic.initMap()
+                    item.gameData.SUShips = commonLogic.initUShips()
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -420,37 +286,55 @@ const getWs = async (ws, url,user) => {
             });
         }
         if (newMessageDate.eventName === "startGameSetShot") {
-/*                        const newMessageDateReceived = {
-                            eventName: "userTurn",
-                            date: {
-                                gameId: "",
-                                userId: "",
-                                sector: {
-                                    ship: boolean,
-                                    shot: boolean,
-                                    x: number,
-                                    y: number,
-                                    unlock: boolean,
-                                    img: null | number
-                                }
-                            }
-                        }*/
-            startedGames.forEach(function (item, index, array) {
+            /*                        const newMessageDateReceived = {
+                                        eventName: "userTurn",
+                                        date: {
+                                            gameId: "",
+                                            userId: "",
+                                            sector: {
+                                                ship: boolean,
+                                                shot: boolean,
+                                                x: number,
+                                                y: number,
+                                                unlock: boolean,
+                                                img: null | number
+                                            }
+                                        }
+                                    }*/
+            startedGames.forEach(async function (item, index, array) {
+                let isFirstUser = null
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.firstUser.id) && item.gameData.FUTurn.turn) {
-                    item.gameData = setShot(item.gameData, true, newMessageDate.date.sector)
-                    for (let key in clients) {
-                        if (clients[key].id === item.firstUser.id || clients[key].id === item.secondUser.id) {
-                            clients[key].webSocket.send(JSON.stringify({
-                                eventName: "startGame",
-                                date: [item]
-                            }))
-                        }
-                    }
+                    isFirstUser = true
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.secondUser.id) && !item.gameData.FUTurn.turn) {
-                    item.gameData = setShot(item.gameData,false, newMessageDate.date.sector)
+                    isFirstUser = false
+                }
+                if (isFirstUser === false || isFirstUser === true) {
+                    const firstUserProfile = await Profile.findById(item.firstUser.id)
+                    const secondUserProfile = await Profile.findById(item.secondUser.id)
+
+                    item.gameData = setShot(item.gameData, isFirstUser, newMessageDate.date.sector)
+                     if (isFirstUser) {
+                         if (!(item.gameData.SUShips.numberShips1 +
+                             item.gameData.SUShips.numberShips2 +
+                             item.gameData.SUShips.numberShips3 +
+                             item.gameData.SUShips.numberShips4)) {
+                             item.winnerUser=item.firstUser
+                             firstUserProfile.isWinn(true)
+                             secondUserProfile.isWinn(false)
+                         }
+                     } else if (!(item.gameData.FUShips.numberShips1 +
+                         item.gameData.FUShips.numberShips2 +
+                         item.gameData.FUShips.numberShips3 +
+                         item.gameData.FUShips.numberShips4)) {
+                         item.winnerUser=item.secondUser
+                         firstUserProfile.isWinn(false)
+                         secondUserProfile.isWinn(true)
+                     }
+                     firstUserProfile.save()
+                     secondUserProfile.save()
                     for (let key in clients) {
                         if (clients[key].id === item.firstUser.id || clients[key].id === item.secondUser.id) {
                             clients[key].webSocket.send(JSON.stringify({
@@ -461,9 +345,9 @@ const getWs = async (ws, url,user) => {
                     }
                 }
             });
+
+
         }
-
-
     });
 
 
