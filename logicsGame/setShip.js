@@ -1,5 +1,3 @@
-
-
 const lockMap = (map) => { // заблокировать карту
     let userMap = map
     for (let i = 0; i < 10; i++) {

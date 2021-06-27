@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 const {v1} = require('uuid');
-const setShot = require('../logicsGame/setShot');
-const setShip = require('../logicsGame/setShip');
-const deleteShipFromTheMap = require('../logicsGame/deleteShipFromTheMap');
 const commonLogic = require('../logicsGame/commonLogic')
 const Profile = mongoose.model('Profile');
+const startedGame = require("../logicsGame/startedGame")
 
 
 let clients = {};
@@ -101,12 +99,13 @@ const getWs = async (ws, url, user) => {
                 } else return true
             });
         }
+
         if (newMessageDate.eventName === "acceptGameOfId") {
             invitationsInGames = invitationsInGames.filter(game => {
                 if (game.id === newMessageDate.date.id
                     && game.userId !== user.id) {
                     const gameRoom = commonLogic.createGameRoom(game, profile)
-                    const newGame = commonLogic.createGame(gameRoom.gamesRoomId, gameRoom.firstUser, gameRoom.secondUser)
+                    const newGame = new startedGame(gameRoom.gamesRoomId, gameRoom.firstUser, gameRoom.secondUser)
                     gameRooms.push(gameRoom)
                     startedGames.push(newGame)
                     for (let key in clients) {
@@ -128,8 +127,76 @@ const getWs = async (ws, url, user) => {
                 } else return true
             });
         }
+
+        if (newMessageDate.eventName === "leaveGameRoomOfId") {
+
+            /*gameRoom={
+                firstUser: {
+                    id: game.userId,
+                    name: game.userName
+                },
+                secondUser: {
+                    id: profile.id,
+                    name: profile.name
+                },
+                gamesRoomId: v1()
+            }*/
+
+            gameRooms = gameRooms.filter(game => {
+                if (game.gamesRoomId === newMessageDate.date.gamesRoomId) {
+                    if (game.firstUser.id === newMessageDate.date.userId){
+                        if (!game.secondUser.id){
+                            ws.send(JSON.stringify({
+                                eventName: "startGameDeleteGameOfId",
+                                date: game
+                            }))
+                            return false
+                        }else{
+                            game.firstUser.id=null
+                            ws.send(JSON.stringify({
+                                eventName: "startGameDeleteGameOfId",
+                                date: game
+                            }))
+                            for (let key in clients) {
+                                if (clients[key].id === game.secondUser.id) {
+                                    clients[key].webSocket.send(JSON.stringify({
+                                        eventName: "startGameDeleteGameOfId",
+                                        date: game
+                                    }))
+                                }
+                            }
+                        }
+                    }
+                    if (game.secondUser.id === newMessageDate.date.userId){
+                        if (!game.firstUser.id){
+                            ws.send(JSON.stringify({
+                                eventName: "startGameDeleteGameOfId",
+                                date: game
+                            }))
+                            return false
+                        }else{
+                            game.secondUser.id =null
+                            ws.send(JSON.stringify({
+                                eventName: "startGameDeleteGameOfId",
+                                date: game
+                            }))
+                            for (let key in clients) {
+                                if (clients[key].id === game.firstUser.id) {
+                                    clients[key].webSocket.send(JSON.stringify({
+                                        eventName: "startGameDeleteGameOfId",
+                                        date: game
+                                    }))
+                                }
+                            }
+                        }
+                    }
+                    return true
+                } else return true
+            });
+        }
         if (newMessageDate.eventName === "startGame") {
             const sendGame = startedGames.filter(g => newMessageDate.date.gameId === g.gameId)
+            console.log(sendGame)
             ws.send(JSON.stringify({
                 eventName: "startGame",
                 date: sendGame
@@ -153,8 +220,7 @@ const getWs = async (ws, url, user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
-                    item.gameData = setShip(item.gameData, true, newMessageDate.date.sector,
-                        newMessageDate.date.horizonSetShip, newMessageDate.date.whatSetShip)
+                    item.setShip(true, newMessageDate.date)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -162,8 +228,7 @@ const getWs = async (ws, url, user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.secondUser.id) === item.gameData.settingShipUser.secondUser)) {
-                    item.gameData = setShip(item.gameData, false, newMessageDate.date.sector,
-                        newMessageDate.date.horizonSetShip, newMessageDate.date.whatSetShip)
+                    item.setShip(false, newMessageDate.date)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -190,7 +255,7 @@ const getWs = async (ws, url, user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
-                    item.gameData = deleteShipFromTheMap(item.gameData, newMessageDate.date.sector, true)
+                    item.deleteShip(true, newMessageDate.date)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -198,7 +263,7 @@ const getWs = async (ws, url, user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     ((newMessageDate.date.userId === item.secondUser.id) === item.gameData.settingShipUser.secondUser)) {
-                    item.gameData = item.gameData = deleteShipFromTheMap(item.gameData, newMessageDate.date.sector, false)
+                    item.deleteShip(false, newMessageDate.date)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -217,7 +282,7 @@ const getWs = async (ws, url, user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
-                    commonLogic.setShipRandom(item, true)
+                    item.setShipRandom(true)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -225,7 +290,7 @@ const getWs = async (ws, url, user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.secondUser.id) && item.gameData.settingShipUser.secondUser) {
-                    commonLogic.setShipRandom(item, false)
+                    item.setShipRandom(false)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -244,8 +309,7 @@ const getWs = async (ws, url, user) => {
             startedGames.forEach(function (item, index, array) {
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
-                    item.gameData.FUMap = commonLogic.initMap()
-                    item.gameData.FUShips = commonLogic.initUShips()
+                    item.clearMap(true)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -253,8 +317,7 @@ const getWs = async (ws, url, user) => {
                 }
                 if ((item.gameId === newMessageDate.date.gameId) &&
                     (newMessageDate.date.userId === item.secondUser.id) && item.gameData.settingShipUser.secondUser) {
-                    item.gameData.SUMap = commonLogic.initMap()
-                    item.gameData.SUShips = commonLogic.initUShips()
+                    item.clearMap(false)
                     ws.send(JSON.stringify({
                         eventName: "startGame",
                         date: [item]
@@ -271,14 +334,38 @@ const getWs = async (ws, url, user) => {
                             }
                         }*/
             startedGames.forEach(function (item, index, array) {
-                if ((item.gameId === newMessageDate.date.gameId) &&
-                    ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
-                    item.gameData.settingShipUser.firstUser = false
+                if (item.gameId === newMessageDate.date.gameId) {
+                    if ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser) {
+                        item.gameData.settingShipUser.firstUser = false
+                        if(!item.gameData.settingShipUser.secondUser){
+                            for (let key in clients) {
+                                if (clients[key].id === item.secondUser.id) {
+                                    clients[key].webSocket.send(JSON.stringify({
+                                        eventName: "startGame",
+                                        date: [item]
+                                    }))
+                                }
+                            }
+                        }
+                    }
+                    if((newMessageDate.date.userId === item.secondUser.id) === item.gameData.settingShipUser.secondUser){
+                        item.gameData.settingShipUser.secondUser = false
+                        if(!item.gameData.settingShipUser.firstUser){
+                            for (let key in clients) {
+                                if (clients[key].id === item.firstUser.id) {
+                                    clients[key].webSocket.send(JSON.stringify({
+                                        eventName: "startGame",
+                                        date: [item]
+                                    }))
+                                }
+                            }
+                        }
+                    }
                 }
-                if ((item.gameId === newMessageDate.date.gameId) &&
-                    ((newMessageDate.date.userId === item.secondUser.id) === item.gameData.settingShipUser.secondUser)) {
-                    item.gameData.settingShipUser.secondUser = false
-                }
+
+
+
+
                 ws.send(JSON.stringify({
                     eventName: "startGame",
                     date: [item]
@@ -314,27 +401,9 @@ const getWs = async (ws, url, user) => {
                 if (isFirstUser === false || isFirstUser === true) {
                     const firstUserProfile = await Profile.findById(item.firstUser.id)
                     const secondUserProfile = await Profile.findById(item.secondUser.id)
-
-                    item.gameData = setShot(item.gameData, isFirstUser, newMessageDate.date.sector)
-                     if (isFirstUser) {
-                         if (!(item.gameData.SUShips.numberShips1 +
-                             item.gameData.SUShips.numberShips2 +
-                             item.gameData.SUShips.numberShips3 +
-                             item.gameData.SUShips.numberShips4)) {
-                             item.winnerUser=item.firstUser
-                             firstUserProfile.isWinn(true)
-                             secondUserProfile.isWinn(false)
-                         }
-                     } else if (!(item.gameData.FUShips.numberShips1 +
-                         item.gameData.FUShips.numberShips2 +
-                         item.gameData.FUShips.numberShips3 +
-                         item.gameData.FUShips.numberShips4)) {
-                         item.winnerUser=item.secondUser
-                         firstUserProfile.isWinn(false)
-                         secondUserProfile.isWinn(true)
-                     }
-                     firstUserProfile.save()
-                     secondUserProfile.save()
+                    await item.setShot(isFirstUser,firstUserProfile,secondUserProfile,newMessageDate.date)
+                    firstUserProfile.save()
+                    secondUserProfile.save()
                     for (let key in clients) {
                         if (clients[key].id === item.firstUser.id || clients[key].id === item.secondUser.id) {
                             clients[key].webSocket.send(JSON.stringify({
@@ -345,8 +414,6 @@ const getWs = async (ws, url, user) => {
                     }
                 }
             });
-
-
         }
     });
 

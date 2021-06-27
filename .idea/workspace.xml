@@ -10,18 +10,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logicsGame/commonLogic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.1">
+      <change afterPath="$PROJECT_DIR$/logicsGame/startedGame.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtos/profile-dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicsGame/setShot.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/setShot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/profile-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/profile-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/token-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/token-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicsGame/commonLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/commonLogic.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicsGame/setShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/setShip.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ws/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,8 +77,17 @@
       <workItem from="1624598521405" duration="14139000" />
       <workItem from="1624621371822" duration="5828000" />
       <workItem from="1624627329559" duration="1538000" />
-      <workItem from="1624688411687" duration="14923000" />
+      <workItem from="1624688411687" duration="15006000" />
+      <workItem from="1624774746417" duration="16161000" />
     </task>
+    <task id="LOCAL-00001" summary="dev 0.1.1">
+      <created>1624709256474</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1624709256474</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +104,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dev 0.1.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624689065585">

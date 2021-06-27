@@ -36,45 +36,6 @@ const commonLogic={
             numberShips4: 1,
         }
     },
-    createGame  (gameId, firstUser, secondUser)  {
-        return {
-            gameId: gameId,
-            firstUser: firstUser,
-            secondUser: secondUser,
-            winnerUser:null,
-            gameData: {
-                FUMap: commonLogic.initMap(),
-                SUMap: commonLogic.initMap(),
-                FUTurn: {
-                    turn: true
-                },
-                FUShips: {
-                    ship1: 4,
-                    ship2: 3,
-                    ship3: 2,
-                    ship4: 1,
-                    numberShips1: 4,
-                    numberShips2: 3,
-                    numberShips3: 2,
-                    numberShips4: 1,
-                },
-                SUShips: {
-                    ship1: 4,
-                    ship2: 3,
-                    ship3: 2,
-                    ship4: 1,
-                    numberShips1: 4,
-                    numberShips2: 3,
-                    numberShips3: 2,
-                    numberShips4: 1,
-                },
-                settingShipUser: {
-                    firstUser: true,
-                    secondUser: true,
-                },
-            }
-        }
-    },
     createGameRoom (game, profile){
         return {
             firstUser: {
@@ -88,7 +49,7 @@ const commonLogic={
             gamesRoomId: v1()
         }
     },
-    setShipRandom(item, isFirstUser){
+/*    setShipRandom(item, isFirstUser){
         let UMap="FUMap", UShips="FUShips"
         if (!isFirstUser){
             UMap="SUMap"
@@ -107,6 +68,6 @@ const commonLogic={
                     horizon, shipValue)
             }
         }
-    }
+    }*/
 }
 module.exports = commonLogic;
