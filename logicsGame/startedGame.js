@@ -11,11 +11,13 @@ class startedGame {
     secondUser
     winnerUser
     gameData
+    chatData
     constructor(gameId, firstUser, secondUser) {
         this.gameId = gameId
         this.firstUser = firstUser
         this.secondUser = secondUser
         this.winnerUser = null
+        this.chatData=[]
         this.gameData = {
             FUMap: commonLogic.initMap(),
             SUMap: commonLogic.initMap(),
@@ -99,6 +101,9 @@ class startedGame {
                 console.log("")
             }
         }
+    }
+    addMessage (message){
+        this.chatData.push(message)
     }
 }
 module.exports = startedGame;

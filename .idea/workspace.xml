@@ -10,11 +10,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.1">
-      <change afterPath="$PROJECT_DIR$/logicsGame/startedGame.js" afterDir="false" />
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="server V0.1">
+      <change afterPath="$PROJECT_DIR$/ws/wsGeneralChat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsRegistrationInBattle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicsGame/commonLogic.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/commonLogic.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logicsGame/setShip.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/setShip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logicsGame/startedGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/logicsGame/startedGame.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ws/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,16 +79,15 @@
       <workItem from="1624513767323" duration="15232000" />
       <workItem from="1624598521405" duration="14139000" />
       <workItem from="1624621371822" duration="5828000" />
-      <workItem from="1624627329559" duration="1538000" />
-      <workItem from="1624688411687" duration="15006000" />
-      <workItem from="1624774746417" duration="16161000" />
+      <workItem from="1624627329559" duration="1600000" />
+      <workItem from="1624857911205" duration="16680000" />
     </task>
-    <task id="LOCAL-00001" summary="dev 0.1.1">
-      <created>1624709256474</created>
+    <task id="LOCAL-00001" summary="server V0.1">
+      <created>1624628975145</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1624709256474</updated>
+      <updated>1624628975145</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -106,14 +108,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dev 0.1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.1" />
+    <MESSAGE value="server V0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="server V0.1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624689065585">
-      <screen x="82" y="0" width="1454" height="864" />
+    <state x="95" y="69" width="1304" height="726" key="MergeDialog" timestamp="1624858055002">
+      <screen x="99" y="0" width="1437" height="864" />
     </state>
-    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1624689065585" />
+    <state x="95" y="69" width="1304" height="726" key="MergeDialog/99.0.1437.864@99.0.1437.864" timestamp="1624858055002" />
+    <state x="410" y="165" key="Vcs.Push.Dialog.v2" timestamp="1624628981625">
+      <screen x="99" y="0" width="1437" height="864" />
+    </state>
+    <state x="410" y="165" key="Vcs.Push.Dialog.v2/99.0.1437.864@99.0.1437.864" timestamp="1624628981625" />
+    <state x="628" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624857992331">
+      <screen x="99" y="0" width="1437" height="864" />
+    </state>
+    <state x="628" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/99.0.1437.864@99.0.1437.864" timestamp="1624857992331" />
     <state x="475" y="197" key="run.anything.popup" timestamp="1624517081398">
       <screen x="99" y="0" width="1437" height="864" />
     </state>

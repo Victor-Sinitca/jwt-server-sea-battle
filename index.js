@@ -42,7 +42,6 @@ const start = async () => {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
         });
-        app.listen(PORT, () => console.log(`сервер стартанул порт: ${PORT}`))
         server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))
 
     } catch (e) {
