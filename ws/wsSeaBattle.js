@@ -235,13 +235,14 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
         }]
         startedGames.forEach(async function (item, index, array) {
                 if (item.gameId === newMessageDate.date.gameId){
+                    item.chatData.push(newMessage[0])
                     for (let key in clients) {
                         if (clients[key].id === item.firstUser.id || clients[key].id === item.secondUser.id) {
                             clients[key].webSocket.send(JSON.stringify({
                                 eventName: "startGameSendMessage",
                                 date: {
                                     gameId: newMessageDate.date.gameId,
-                                    message: newMessage
+                                    messages: newMessage
                                 }
                             }))
                         }

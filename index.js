@@ -9,7 +9,8 @@ const errorMiddleware = require(`./middlewares/error-middleware`)
 const WebSocketServer = require('ws');
 const getWs = require('./ws/ws');
 const jwt = require(`jsonwebtoken`)
-
+const path = require('path');
+const multer  = require('multer');
 
 const PORT = process.env.PORT || 7000
 const app = express()
@@ -21,6 +22,13 @@ app.use(cors({
     origin:process.env.CLIENT_URL
 }))
 app.use(`/api`,router)
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(function (err, req, res, next) {
+    if (err instanceof multer.MulterError) res.status(500).send(err.message);
+    else next(err);
+});
+
 
 app.use(errorMiddleware) // !!должен быть последним middleware
 const server = http.createServer(app);
