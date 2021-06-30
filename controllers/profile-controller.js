@@ -1,4 +1,10 @@
 const ProfileService = require(`../service/profile-service`)
+const ApiError = require(`../exceptions/api-error`)
+const fs = require('fs')
+const { promisify } = require('util')
+
+const unlinkAsync = promisify(fs.unlink)
+
 
 class ProfileController {
     async getProfile(req, res, next) {
@@ -14,21 +20,31 @@ class ProfileController {
         try {
             const id = req.user.id;
             const {status} = req.body;
-            /*console.log(`user:${JSON.stringify(user)}    status:${status}`)*/
-            const ProfileDate = await ProfileService.getProfileUser(id)
-            await ProfileDate.setStatus(status)
-            await ProfileDate.save()
-            return res.json(ProfileDate.status)
+            const ProfileDate = await ProfileService.updateStatusUSer(id, status)
+            if(ProfileDate){
+                return res.json(ProfileDate.status)
+            }
+            return next(ApiError.BadRequest(`ошибка обновления статуса `, errors.array()))
         } catch (e) {
             next(e)
         }
     }
     async updatePhoto(req, res, next) {
-        try { console.log(`строка загруски фото:`)
-
-            const imagePath = req.file.path.replace(/^public\//, '');
-            console.log(`строка загруски фото: ${imagePath}`)
-            res.redirect(imagePath);
+        try {
+            const id = req.user.id;
+            const imagePath = req.file.path.replace();
+            const imagePathReturn=process.env.API_URL + `/` + imagePath.replace(/\\/g,`/`)
+            const ProfileDate = await ProfileService.getProfileUser(id)
+            if(ProfileDate.photo){
+                try {
+                    await unlinkAsync(ProfileDate.photo.replace(/\//g,`/\\/`))
+                }catch (e) {
+                    console.log(e)
+                }
+            }
+            await ProfileDate.setPhoto(imagePathReturn)
+            await ProfileDate.save()
+          return res.json(imagePathReturn)
         } catch (e) {
             next(e)
         }

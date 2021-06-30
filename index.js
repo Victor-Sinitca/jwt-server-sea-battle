@@ -16,6 +16,8 @@ const PORT = process.env.PORT || 7000
 const app = express()
 
 app.use(express.json())
+/*app.use(express.static('public'));*/
+app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
 app.use(cors({
     credentials:true, // разрешаем куки

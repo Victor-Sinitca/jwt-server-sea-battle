@@ -10,6 +10,22 @@ class ProfileService {
         }
         return profile
     }
+
+
+    async updateStatusUSer(userId,status) {
+        try {
+            const profile = await ProfileModel.findById(userId)
+            if(!profile){
+                return ApiError.BadRequest("отсутствует профиль")
+            }
+            await profile.setStatus(status)
+            await profile.save()
+            return profile
+        }catch (e) {
+            return null
+        }
+
+    }
 }
 
 module.exports = new ProfileService()
