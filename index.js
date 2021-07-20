@@ -56,7 +56,7 @@ const start = async () => {
             }
         });
         /*server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))*/
-        server.listen(80,  () => console.log(`сервер стартанул порт: ${PORT}`))
+        server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))
 
     } catch (e) {
         console.log(e)
