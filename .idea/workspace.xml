@@ -25,8 +25,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5-17">
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5-18">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -50,6 +52,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -99,7 +102,7 @@
       <workItem from="1625031232556" duration="12298000" />
       <workItem from="1626438671111" duration="1818000" />
       <workItem from="1626672091854" duration="12113000" />
-      <workItem from="1626758221006" duration="6695000" />
+      <workItem from="1626758221006" duration="13587000" />
     </task>
     <task id="LOCAL-00001" summary="server V0.1">
       <created>1624628975145</created>
@@ -185,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626764129382</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="dev 0.1.5-18">
+      <created>1626765226589</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1626765226589</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +238,8 @@
     <MESSAGE value="dev 0.1.5-15" />
     <MESSAGE value="dev 0.1.5-16" />
     <MESSAGE value="dev 0.1.5-17" />
-    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5-17" />
+    <MESSAGE value="dev 0.1.5-18" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5-18" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="69" width="1304" height="726" key="MergeDialog" timestamp="1624858055002">

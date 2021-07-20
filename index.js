@@ -21,10 +21,10 @@ app.use(express.json())
 /*app.use(express.static('public'));*/
 app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
-app.use(cors(/*{
+app.use(cors({
     credentials:true, // разрешаем куки
     origin:process.env.CLIENT_URL
-}*/))
+}))
 app.use(`/api`,router)
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -32,6 +32,7 @@ app.use(function (err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message);
     else next(err);
 });
+//tests
 app.get(`/users`,userController.getTest)
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
@@ -57,8 +58,8 @@ const start = async () => {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
         });
-        /*server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))*/
-        server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))
+        server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))
+       /* server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))*/
 
     } catch (e) {
         console.log(e)
