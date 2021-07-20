@@ -20,9 +20,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5-11">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5-12">
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +94,7 @@
       <workItem from="1625031232556" duration="12298000" />
       <workItem from="1626438671111" duration="1818000" />
       <workItem from="1626672091854" duration="12113000" />
-      <workItem from="1626758221006" duration="4558000" />
+      <workItem from="1626758221006" duration="4949000" />
     </task>
     <task id="LOCAL-00001" summary="server V0.1">
       <created>1624628975145</created>
@@ -140,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1626762169542</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="dev 0.1.5-12">
+      <created>1626762898846</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1626762898846</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,7 +182,8 @@
     <MESSAGE value="dev 0.1.5" />
     <MESSAGE value="dev 0.1.5-1" />
     <MESSAGE value="dev 0.1.5-11" />
-    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5-11" />
+    <MESSAGE value="dev 0.1.5-12" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5-12" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="69" width="1304" height="726" key="MergeDialog" timestamp="1624858055002">
@@ -188,6 +194,10 @@
       <screen x="99" y="0" width="1437" height="864" />
     </state>
     <state x="410" y="165" key="Vcs.Push.Dialog.v2/99.0.1437.864@99.0.1437.864" timestamp="1625063025232" />
+    <state x="628" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1626762894563">
+      <screen x="99" y="0" width="1437" height="864" />
+    </state>
+    <state x="628" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/99.0.1437.864@99.0.1437.864" timestamp="1626762894563" />
     <state x="628" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624857992331">
       <screen x="99" y="0" width="1437" height="864" />
     </state>
