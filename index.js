@@ -21,10 +21,10 @@ app.use(express.json())
 /*app.use(express.static('public'));*/
 app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
-app.use(cors({
+/*app.use(cors({
     credentials:true, // разрешаем куки
     origin:process.env.CLIENT_URL
-}))
+}))*/
 app.use(`/api`,router)
 
 app.use(express.static(path.join(__dirname, 'public')));
