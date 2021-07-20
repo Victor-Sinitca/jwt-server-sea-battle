@@ -33,7 +33,9 @@ app.use(function (err, req, res, next) {
     else next(err);
 });
 app.get(`/users`,userController.getTest)
-
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 app.use(errorMiddleware) // !!должен быть последним middleware
 const server = http.createServer(app);
