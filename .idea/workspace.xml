@@ -6,27 +6,23 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5">
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/leaveGameRoomOfId.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGame.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameClearMap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameDeleteShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSendMessage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShipsRandom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameUser.js" afterDir="false" />
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5-1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ws/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ws/wsGeneralChat.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsChat/wsGeneralChat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ws/wsRegistrationInBattle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsRegistration/wsRegistrationInBattle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ws/wsSeaBattle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsSeaBattle/wsSeaBattle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +95,7 @@
       <workItem from="1625031232556" duration="12298000" />
       <workItem from="1626438671111" duration="1818000" />
       <workItem from="1626672091854" duration="12113000" />
-      <workItem from="1626758221006" duration="2143000" />
+      <workItem from="1626758221006" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="server V0.1">
       <created>1624628975145</created>
@@ -129,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625063019754</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="dev 0.1.5-1">
+      <created>1626760721704</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1626760721704</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,7 +143,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -152,7 +167,8 @@
     <MESSAGE value="dev 0.1.3" />
     <MESSAGE value="dev 0.1.4" />
     <MESSAGE value="dev 0.1.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5" />
+    <MESSAGE value="dev 0.1.5-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5-1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="69" width="1304" height="726" key="MergeDialog" timestamp="1624858055002">

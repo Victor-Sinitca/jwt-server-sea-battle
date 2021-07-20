@@ -15,6 +15,8 @@ const multer  = require('multer');
 const PORT = process.env.PORT || 7000
 const app = express()
 
+const userController = require(`./controllers/user-controller`)
+
 app.use(express.json())
 /*app.use(express.static('public'));*/
 app.use('/public', express.static('public'));
@@ -30,6 +32,7 @@ app.use(function (err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message);
     else next(err);
 });
+app.get(`/users`,userController.getUsers)
 
 
 app.use(errorMiddleware) // !!должен быть последним middleware
