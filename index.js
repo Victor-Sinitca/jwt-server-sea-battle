@@ -32,7 +32,7 @@ app.use(function (err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message);
     else next(err);
 });
-app.get(`/users`,userController.getUsers)
+app.get(`/users`,userController.getTest)
 
 
 app.use(errorMiddleware) // !!должен быть последним middleware

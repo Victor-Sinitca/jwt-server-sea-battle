@@ -76,6 +76,17 @@ class UserController {
             next(e)
         }
     }
+    async getTest(req, res, next) {
+        try {
+            const test={
+                name:"test",
+                text:"Hello"
+            }
+            await res.json(test)
+        } catch (e) {
+            next(e)
+        }
+    }
     async getUserProfile(req, res, next){
         try {
             const userProfile = await userService.getAllUsers()
