@@ -20,6 +20,7 @@ class UserController {
     }
 
     async login(req, res, next) {
+       /* console.log("login try")*/
         try {
             console.log("пользователь зашел")
             const {email, password} = req.body;
@@ -28,6 +29,7 @@ class UserController {
             return res.json(userData)
         } catch (e) {
             next(e)
+            /*console.log("login error")*/
         }
     }
 

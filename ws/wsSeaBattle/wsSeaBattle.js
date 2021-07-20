@@ -1,8 +1,29 @@
+const startGame = require("./startGame")
+const leaveGameRoomOfId = require("./leaveGameRoomOfId")
+const startGameUser = require("./startGameUser")
+const startGameSetShip = require("./startGameSetShip")
+const startGameSetShipsRandom = require("./startGameSetShipsRandom")
+const startGameDeleteShip = require("./startGameDeleteShip")
+const startGameSetShot = require("./startGameSetShot")
+const startGameClearMap = require("./startGameClearMap")
+const startGameSendMessage = require("./startGameSendMessage")
+
 const mongoose = require('mongoose');
 const Profile = mongoose.model('Profile');
 
+
 const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames, setGameRooms, profile) => {
-    if (newMessageDate.eventName === "startGame") {
+    startGame(ws,newMessageDate,startedGames)
+    leaveGameRoomOfId(ws, newMessageDate, startedGames, gameRooms, clients, setGameRooms)
+    startGameUser(ws, newMessageDate, startedGames,clients)
+    startGameSetShip(ws,newMessageDate,startedGames)
+    startGameSetShipsRandom(ws, newMessageDate, startedGames)
+    startGameDeleteShip(ws, newMessageDate, startedGames)
+    startGameSetShot(ws, newMessageDate, startedGames, Profile, clients)
+    startGameDeleteShip(ws, newMessageDate, startedGames)
+    startGameClearMap(ws, newMessageDate, startedGames)
+    startGameSendMessage(ws, newMessageDate, startedGames, profile, clients)
+    /*if (newMessageDate.eventName === "startGame") {
         const sendGame = startedGames.filter(g => newMessageDate.date.gameId === g.gameId)
         console.log(sendGame)
         ws.send(JSON.stringify({
@@ -11,8 +32,9 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
         }))
     }
 
+
     if (newMessageDate.eventName === "startGameSetShip") {
-        /*const newMessageDateReceived = {
+        /!*const newMessageDateReceived = {
             eventName: "startGameSetShip",
             date: {
                 sector: {
@@ -24,7 +46,7 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
                 horizonSetShip: horizonSetShip,
                 whatSetShip: whatSetShip
             }
-        }*/
+        }*!/
         startedGames.forEach(function (item, index, array) {
             if ((item.gameId === newMessageDate.date.gameId) &&
                 ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
@@ -44,8 +66,10 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameDeleteShip") {
-        /*const newMessageDateReceived = {
+        /!*const newMessageDateReceived = {
             eventName: "startGameDeleteShip",
             date: {
                 sector: {
@@ -59,7 +83,7 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
                 gameId: gameId,
                 userId: userId
             }
-        }*/
+        }*!/
         startedGames.forEach(function (item, index, array) {
             if ((item.gameId === newMessageDate.date.gameId) &&
                 ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser)) {
@@ -79,14 +103,16 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameSetShipsRandom") {
-        /* const newMessageDateReceived = {
+        /!* const newMessageDateReceived = {
              eventName: "startGameSetShipsRandom",
              date: {
                  gameId: gameId,
                  userId: userId
              }
-         }*/
+         }*!/
         startedGames.forEach(function (item, index, array) {
             if ((item.gameId === newMessageDate.date.gameId) &&
                 (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
@@ -106,14 +132,16 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameClearMap") {
-        /* const newMessageDateReceived = {
+        /!* const newMessageDateReceived = {
              eventName: "startGameSetShipsRandom",
              date: {
                  gameId: gameId,
                  userId: userId
              }
-         }*/
+         }*!/
         startedGames.forEach(function (item, index, array) {
             if ((item.gameId === newMessageDate.date.gameId) &&
                 (newMessageDate.date.userId === item.firstUser.id) && item.gameData.settingShipUser.firstUser) {
@@ -133,14 +161,16 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameUser") {
-        /*            const newMessageDateReceived = {
+        /!*            const newMessageDateReceived = {
                         eventName: "startGameUser",
                         date: {
                             gameId: gameId,
                             userId: userId
                         }
-                    }*/
+                    }*!/
         startedGames.forEach(function (item, index, array) {
             if (item.gameId === newMessageDate.date.gameId) {
                 if ((newMessageDate.date.userId === item.firstUser.id) === item.gameData.settingShipUser.firstUser) {
@@ -176,8 +206,10 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameSetShot") {
-        /*                        const newMessageDateReceived = {
+        /!*                        const newMessageDateReceived = {
                                     eventName: "userTurn",
                                     date: {
                                         gameId: "",
@@ -191,7 +223,7 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
                                             img: null | number
                                         }
                                     }
-                                }*/
+                                }*!/
         startedGames.forEach(async function (item, index, array) {
             let isFirstUser = null
             if ((item.gameId === newMessageDate.date.gameId) &&
@@ -219,14 +251,16 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         });
     }
+
+
     if (newMessageDate.eventName === "startGameSendMessage") {
-        /*                        const newMessageDateReceived = {
+        /!*                        const newMessageDateReceived = {
                                     eventName: "startGameSendMessage",
                                     date: {
                                         gameId: "",
                                         message: ""
                                     }
-                                }*/
+                                }*!/
         const newMessage = [{
             message: newMessageDate.date.message,
             photo: profile.photo ?? "",
@@ -251,8 +285,10 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
             }
         );
     }
+
+
     if (newMessageDate.eventName === "leaveGameRoomOfId") {
-        /*gameRoom={
+        /!*gameRoom={
             firstUser: {
                 id: game.userId,
                 name: game.userName
@@ -262,7 +298,7 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
                 name: profile.name
             },
             gamesRoomId: v1()
-        }*/
+        }*!/
 
         const newGameRooms = gameRooms.filter(game => {
             if (game.gamesRoomId === newMessageDate.date.gamesRoomId) {
@@ -319,6 +355,7 @@ const wsSeaBattle = (ws, user, newMessageDate, clients, gameRooms, startedGames,
         });
         setGameRooms(newGameRooms)
 
-    }
+    }*/
+
 }
 module.exports = wsSeaBattle;

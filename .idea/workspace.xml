@@ -10,13 +10,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.4">
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="dev 0.1.5">
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/leaveGameRoomOfId.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGame.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameClearMap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameDeleteShip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSendMessage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShipsRandom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameSetShot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ws/wsSeaBattle/startGameUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/profile-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/profile-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/auth-middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/auth-middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/profile-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/profile-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/token-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/token-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/ws.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/ws.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/wsGeneralChat.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsChat/wsGeneralChat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/wsRegistrationInBattle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsRegistration/wsRegistrationInBattle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws/wsSeaBattle.js" beforeDir="false" afterPath="$PROJECT_DIR$/ws/wsSeaBattle/wsSeaBattle.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +66,11 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\ws\wsSeaBattle" />
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\ws\wsRegistration" />
+      <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\ws\wsChat" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\controllers" />
       <recent name="E:\Proect_react\Proects\jwt-server-sea-battle" />
@@ -81,7 +96,10 @@
       <workItem from="1624857911205" duration="16739000" />
       <workItem from="1624890155061" duration="27000" />
       <workItem from="1624943636297" duration="11655000" />
-      <workItem from="1625031232556" duration="12193000" />
+      <workItem from="1625031232556" duration="12298000" />
+      <workItem from="1626438671111" duration="1818000" />
+      <workItem from="1626672091854" duration="12113000" />
+      <workItem from="1626758221006" duration="2143000" />
     </task>
     <task id="LOCAL-00001" summary="server V0.1">
       <created>1624628975145</created>
@@ -104,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624963372466</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="dev 0.1.5">
+      <created>1625063019754</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1625063019754</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,17 +151,18 @@
     <MESSAGE value="server V0.1" />
     <MESSAGE value="dev 0.1.3" />
     <MESSAGE value="dev 0.1.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.4" />
+    <MESSAGE value="dev 0.1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="dev 0.1.5" />
   </component>
   <component name="WindowStateProjectService">
     <state x="95" y="69" width="1304" height="726" key="MergeDialog" timestamp="1624858055002">
       <screen x="99" y="0" width="1437" height="864" />
     </state>
     <state x="95" y="69" width="1304" height="726" key="MergeDialog/99.0.1437.864@99.0.1437.864" timestamp="1624858055002" />
-    <state x="410" y="165" key="Vcs.Push.Dialog.v2" timestamp="1624963384010">
+    <state x="410" y="165" key="Vcs.Push.Dialog.v2" timestamp="1625063025232">
       <screen x="99" y="0" width="1437" height="864" />
     </state>
-    <state x="410" y="165" key="Vcs.Push.Dialog.v2/99.0.1437.864@99.0.1437.864" timestamp="1624963384010" />
+    <state x="410" y="165" key="Vcs.Push.Dialog.v2/99.0.1437.864@99.0.1437.864" timestamp="1625063025232" />
     <state x="628" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624857992331">
       <screen x="99" y="0" width="1437" height="864" />
     </state>

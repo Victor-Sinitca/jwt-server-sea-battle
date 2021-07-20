@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Profile = mongoose.model('Profile');
-const commonLogic = require('../logicsGame/commonLogic')
-const startedGame = require("../logicsGame/startedGame")
+const commonLogic = require('../../logicsGame/commonLogic')
+const startedGame = require("../../logicsGame/startedGame")
 const {v1} = require('uuid');
 
 const wsRegistrationInBattle = (ws, user, profile, invitationsInGames, newMessageDate,

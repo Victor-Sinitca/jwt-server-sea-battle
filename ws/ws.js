@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Profile = mongoose.model('Profile');
-const wsSeaBattle = require("./wsSeaBattle")
-const wsRegistrationInBattle = require("./wsRegistrationInBattle")
-const wsGeneralChat = require("./wsGeneralChat")
+const wsSeaBattle = require("./wsSeaBattle/wsSeaBattle")
+const wsRegistrationInBattle = require("./wsRegistration/wsRegistrationInBattle")
+const wsGeneralChat = require("./wsChat/wsGeneralChat")
 
 
 let clients = {};
