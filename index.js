@@ -17,7 +17,7 @@ const app = express()
 
 const userController = require(`./controllers/user-controller`)
 
-app.use(express.json())
+app.use(express.json({limit: "50mb"}))
 /*app.use(express.static('public'));*/
 app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
