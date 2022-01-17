@@ -11,6 +11,7 @@ let invitationsInGames = []
 let gameRooms = []
 let startedGames = []
 
+
 const setGameRooms = (newDate) => {gameRooms = newDate}
 const setInvitationsInGames = (newDate) => {invitationsInGames = newDate}
 

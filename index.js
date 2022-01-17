@@ -42,6 +42,8 @@ const start = async () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex:true,
+        },function(error) {
+            if(error) console.log(`error  mongoose.connect : ${error}`)
         })
         webSocketServer.on('connection',  async (ws, url,) => {
             try{
@@ -53,7 +55,6 @@ const start = async () => {
             }
         });
         server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))
-
     } catch (e) {
         console.log(e)
     }
