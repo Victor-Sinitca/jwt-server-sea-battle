@@ -4,7 +4,8 @@ const fs = require('fs')
 const { promisify } = require('util')
 
 const unlinkAsync = promisify(fs.unlink)
-
+const isProduction = process.env.NODE_ENV === 'production';
+const API_URL= isProduction ? process.env.API_URL : process.env.DEV_API_URL
 
 class ProfileController {
     async getProfile(req, res, next) {
@@ -33,7 +34,7 @@ class ProfileController {
         try {
             const id = req.user.id;
             const imagePath = req.file.path.replace();
-            const imagePathReturn=process.env.API_URL + `/` + imagePath.replace(/\\/g,`/`)
+            const imagePathReturn= API_URL + `/` + imagePath.replace(/\\/g,`/`)
             const ProfileDate = await ProfileService.getProfileUser(id)
             if(ProfileDate.photo){
                 try {

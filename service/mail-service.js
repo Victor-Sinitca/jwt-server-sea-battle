@@ -1,4 +1,6 @@
 const nodeMailer = require(`nodemailer`)
+const isProduction = process.env.NODE_ENV === 'production';
+const API_URL= isProduction ? process.env.API_URL : process.env.DEV_API_URL
 
 class MailService {
     constructor() {
@@ -17,7 +19,7 @@ class MailService {
         await this.transporter.sendMail({
             from: process.env.SMTP_LOGIN,
             to,
-            subject: `активация акаунта на` + process.env.API_URL,
+            subject: `активация акаунта на` + API_URL,
             text: ``,
             html:`перейдите для активации ${linc}` /*<div>
                     <h1> перейдите для активации</h1>

@@ -6,6 +6,8 @@ const mailService = require(`../service/mail-service`)
 const tokenService = require(`../service/token-service`)
 const ApiError = require(`../exceptions/api-error`)
 
+const isProduction = process.env.NODE_ENV === 'production';
+const API_URL= isProduction ? process.env.API_URL : process.env.DEV_API_URL
 
 class UserService {
     async registration(email, password, name) {
@@ -22,7 +24,7 @@ class UserService {
                 numberOfWinsSB: 0,
             }
         })
-        await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`)
+        await mailService.sendActivationMail(email, `${API_URL}/api/activate/${activationLink}`)
         const userDto = user.getUser()
         const profileDto = profile.getProfile()
         const tokens = tokenService.generateTokens({...userDto})

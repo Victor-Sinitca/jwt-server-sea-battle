@@ -14,6 +14,8 @@ const multer  = require('multer');
 
 const PORT = process.env.PORT || 7000
 const app = express()
+const isProduction = process.env.NODE_ENV === 'production';
+
 
 app.use(express.json())
 /*app.use(express.static('public'));*/
@@ -21,7 +23,7 @@ app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
 app.use(cors({
     credentials:true, // разрешаем куки
-    origin:process.env.CLIENT_URL
+    origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
 }))
 app.use(`/api`,router)
 
@@ -54,7 +56,7 @@ const start = async () => {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
         });
-        server.listen(PORT,process.env.API_WS,  () => console.log(`сервер стартанул порт: ${PORT}`))
+        server.listen(PORT, "",  () => console.log(`сервер стартанул порт: ${PORT}`))
     } catch (e) {
         console.log(e)
     }
