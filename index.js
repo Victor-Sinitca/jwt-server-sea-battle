@@ -23,6 +23,9 @@ app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
 app.use(cors({
     credentials:true, // разрешаем куки
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
     origin: [process.env.CLIENT_URL,process.env.DEV_CLIENT_URL]
 }))
