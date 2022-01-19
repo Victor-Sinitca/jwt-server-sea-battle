@@ -27,8 +27,8 @@ app.use(cors({
     preflightContinue: false,
     optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
-    origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL, /\.herokuapp\.com$/]
-    //origin: "*"
+    //origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL, /\.herokuapp\.com$/]
+    origin: /\.herokuapp\.com$/
 }))
 app.use(`/api`,router)
 
