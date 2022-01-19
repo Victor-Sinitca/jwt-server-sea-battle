@@ -27,14 +27,14 @@ app.use(cors({
     preflightContinue: true,
     optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
-    //origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL, /\.herokuapp\.com$/]
+    origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL ]
     //origin: /\.herokuapp\.com$/
     //origin: process.env.DEV_CLIENT_URL,
-    origin: process.env.CLIENT_URL,
+    //origin: process.env.CLIENT_URL,
 }))
 app.use(`/api`,router)
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (err, req, res, next) {
     if (err instanceof multer.MulterError) res.status(500).send(err.message);
     else next(err);
