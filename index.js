@@ -29,7 +29,8 @@ app.use(cors({
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
     //origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL, /\.herokuapp\.com$/]
     //origin: /\.herokuapp\.com$/
-    origin: process.env.DEV_CLIENT_URL,
+    //origin: process.env.DEV_CLIENT_URL,
+    origin: process.env.CLIENT_URL,
 }))
 app.use(`/api`,router)
 
