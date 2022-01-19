@@ -3,7 +3,7 @@ const {validationResult} = require(`express-validator`)
 const ApiError = require(`../exceptions/api-error`)
 
 const isProduction = process.env.NODE_ENV === 'production';
-const CLIENT_URL= isProduction ? 'herokuapp.com' : ""
+const CLIENT_URL= isProduction ? '.herokuapp.com' : ""
 
 class UserController {
     async registration(req, res, next) {
