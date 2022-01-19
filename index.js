@@ -24,7 +24,7 @@ app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userD
 app.use(cors({
     credentials:true, // разрешаем куки
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
+    preflightContinue: true,
     optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
     //origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL, /\.herokuapp\.com$/]
