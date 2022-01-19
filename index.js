@@ -40,6 +40,8 @@ app.use(function (err, req, res, next) {
     else next(err);
 });
 
+app.set("trust proxy", 1);
+
 app.use(errorMiddleware) // !!должен быть последним middleware
 const server = http.createServer(app);
 const webSocketServer = new WebSocketServer.Server({server});
