@@ -53,7 +53,7 @@ const start = async () => {
         },function(error) {
             if(error) console.log(`error  mongoose.connect : ${error}`)
         })
-        /*webSocketServer.on('connection',  async (ws, url,) => {
+        webSocketServer.on('connection',  async (ws, url,) => {
             try{
                 const token = url.url.split("=")[1]
                 const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
@@ -61,7 +61,7 @@ const start = async () => {
             }catch (e) {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
-        });*/
+        });
         server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))
     } catch (e) {
         console.log(e)

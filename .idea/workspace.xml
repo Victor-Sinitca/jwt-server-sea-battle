@@ -26,9 +26,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="on heroku 0.1.5">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +78,23 @@
       <recent name="E:\Proect_react\Proects\jwt-server-sea-battle\models" />
       <recent name="E:\Proect_node\jwt-server-end" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -195,6 +210,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="on heroku 0.1.5" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1411" height="224" key="GridCell.Tab.0.bottom" timestamp="1642587534438">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state width="1411" height="224" key="GridCell.Tab.0.bottom/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642587534438" />
+    <state width="1411" height="224" key="GridCell.Tab.0.center" timestamp="1642587534437">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state width="1411" height="224" key="GridCell.Tab.0.center/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642587534437" />
+    <state width="1411" height="224" key="GridCell.Tab.0.left" timestamp="1642587534437">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state width="1411" height="224" key="GridCell.Tab.0.left/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642587534437" />
+    <state width="1411" height="224" key="GridCell.Tab.0.right" timestamp="1642587534437">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state width="1411" height="224" key="GridCell.Tab.0.right/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642587534437" />
+    <state x="698" y="300" width="388" height="263" key="MultipleFileMergeDialog" timestamp="1642585887794">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state x="698" y="300" width="388" height="263" key="MultipleFileMergeDialog/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642585887794" />
     <state x="402" y="165" key="Vcs.Push.Dialog.v2" timestamp="1642495969167">
       <screen x="82" y="0" width="1454" height="864" />
     </state>
@@ -203,6 +238,10 @@
       <screen x="82" y="0" width="1454" height="864" />
     </state>
     <state x="661" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642493804651" />
+    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1642585867350">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state x="619" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642585867350" />
     <state x="466" y="197" key="run.anything.popup" timestamp="1638107744696">
       <screen x="82" y="0" width="1454" height="864" />
     </state>
