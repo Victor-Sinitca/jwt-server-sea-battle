@@ -27,8 +27,8 @@ app.use(cors({
     preflightContinue: false,
     optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
-   // origin: [process.env.CLIENT_URL,process.env.DEV_CLIENT_URL]
-    origin: "*"
+    origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL]
+    //origin: "*"
 }))
 app.use(`/api`,router)
 
@@ -61,7 +61,7 @@ const start = async () => {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
         });
-        server.listen(PORT, "",  () => console.log(`сервер стартанул порт: ${PORT}`))
+        server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))
     } catch (e) {
         console.log(e)
     }

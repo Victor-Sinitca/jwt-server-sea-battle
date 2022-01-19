@@ -25,14 +25,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="on heroku 0.1">
+    <list default="true" id="646a8f42-d6e8-4da9-b1d9-681157c35e4c" name="Default Changelist" comment="on heroku 0.1.5">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/profile-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/profile-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/mail-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/mail-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/service/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +102,8 @@
       <workItem from="1638102069389" duration="6162000" />
       <workItem from="1640105231335" duration="1235000" />
       <workItem from="1642427603727" duration="7158000" />
-      <workItem from="1642490860081" duration="2930000" />
+      <workItem from="1642490860081" duration="5201000" />
+      <workItem from="1642573091294" duration="1769000" />
     </task>
     <task id="LOCAL-00001" summary="dev 0.1.1">
       <created>1624709256474</created>
@@ -122,7 +119,42 @@
       <option name="project" value="LOCAL" />
       <updated>1642432490071</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="on heroku 0.1.1">
+      <created>1642493812367</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1642493812367</updated>
+    </task>
+    <task id="LOCAL-00004" summary="on heroku 0.1.2">
+      <created>1642495264539</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642495264539</updated>
+    </task>
+    <task id="LOCAL-00005" summary="on heroku 0.1.3">
+      <created>1642495594890</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642495594890</updated>
+    </task>
+    <task id="LOCAL-00006" summary="on heroku 0.1.4">
+      <created>1642495818944</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642495818944</updated>
+    </task>
+    <task id="LOCAL-00007" summary="on heroku 0.1.5">
+      <created>1642495965810</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642495965810</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,13 +187,22 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dev 0.1.1" />
     <MESSAGE value="on heroku 0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="on heroku 0.1" />
+    <MESSAGE value="on heroku 0.1.1" />
+    <MESSAGE value="on heroku 0.1.2" />
+    <MESSAGE value="on heroku 0.1.3" />
+    <MESSAGE value="on heroku 0.1.4" />
+    <MESSAGE value="on heroku 0.1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="on heroku 0.1.5" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="402" y="165" key="Vcs.Push.Dialog.v2" timestamp="1642432494974">
+    <state x="402" y="165" key="Vcs.Push.Dialog.v2" timestamp="1642495969167">
       <screen x="82" y="0" width="1454" height="864" />
     </state>
-    <state x="402" y="165" key="Vcs.Push.Dialog.v2/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642432494974" />
+    <state x="402" y="165" key="Vcs.Push.Dialog.v2/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642495969167" />
+    <state x="661" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1642493804651">
+      <screen x="82" y="0" width="1454" height="864" />
+    </state>
+    <state x="661" y="166" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/82.0.1454.864/1920.0.1360.728@82.0.1454.864" timestamp="1642493804651" />
     <state x="466" y="197" key="run.anything.popup" timestamp="1638107744696">
       <screen x="82" y="0" width="1454" height="864" />
     </state>
