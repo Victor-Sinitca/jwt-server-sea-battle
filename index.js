@@ -23,9 +23,9 @@ app.use('/public', express.static('public'));
 app.use(cookieParser()) // подключает res.cookie(`refreshToken`, userDate.refreshToken, )
 app.use(cors({
     credentials:true, // разрешаем куки
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: true,
-    optionsSuccessStatus: 204,
+    //methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+   // preflightContinue: true,
+    //optionsSuccessStatus: 204,
    // origin: isProduction? process.env.CLIENT_URL : process.env.DEV_CLIENT_URL
     origin: [""+process.env.CLIENT_URL, ""+process.env.DEV_CLIENT_URL ]
     //origin: /\.herokuapp\.com$/
@@ -40,7 +40,6 @@ app.use(function (err, req, res, next) {
     else next(err);
 });
 
-
 app.use(errorMiddleware) // !!должен быть последним middleware
 const server = http.createServer(app);
 const webSocketServer = new WebSocketServer.Server({server});
@@ -54,7 +53,7 @@ const start = async () => {
         },function(error) {
             if(error) console.log(`error  mongoose.connect : ${error}`)
         })
-        webSocketServer.on('connection',  async (ws, url,) => {
+        /*webSocketServer.on('connection',  async (ws, url,) => {
             try{
                 const token = url.url.split("=")[1]
                 const user = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
@@ -62,7 +61,7 @@ const start = async () => {
             }catch (e) {
                 console.log(`ошибка webSocketServer: ${e}`)
             }
-        });
+        });*/
         server.listen(PORT,  () => console.log(`сервер стартанул порт: ${PORT}`))
     } catch (e) {
         console.log(e)
