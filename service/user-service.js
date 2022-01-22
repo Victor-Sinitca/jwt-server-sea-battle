@@ -81,9 +81,9 @@ class UserService {
         return {...tokens, user: userDto,profile: profileDto}
     }
     async getAllUsers() {
-        const users = await UserModel.find()
-        return users.map(u => {
-            return u.getUser()
+        const profile = await ProfileModel.find()
+        return profile.map(p => {
+            return p.getProfile()
         })
     }
 }
