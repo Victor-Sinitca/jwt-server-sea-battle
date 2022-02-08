@@ -3,7 +3,7 @@ const {validationResult} = require(`express-validator`)
 const ApiError = require(`../exceptions/api-error`)
 
 const isProduction = process.env.NODE_ENV === 'production';
-const CLIENT_URL= isProduction ? '.herokuapp.com' : ""
+const CLIENT_URL = isProduction ? '.herokuapp.com' : ""
 
 class UserController {
     async registration(req, res, next) {
@@ -13,7 +13,7 @@ class UserController {
             if (!errors.isEmpty()) {
                 return next(ApiError.BadRequest(`ошибка валидации`, errors.array()))
             }
-            const {email, password,name} = req.body
+            const {email, password, name} = req.body
             const userDate = await userService.registration(email, password, name)
             res.cookie(`refreshToken`, userDate.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
             return res.json(userDate)
@@ -31,7 +31,7 @@ class UserController {
                 {
                     maxAge: 30 * 24 * 60 * 60 * 1000,
                     httpOnly: true,
-                    domain:CLIENT_URL
+                    domain: CLIENT_URL
                 })
             return res.json(userData)
         } catch (e) {
@@ -82,7 +82,8 @@ class UserController {
             next(e)
         }
     }
-    async getUserProfile(req, res, next){
+
+    async getUserProfile(req, res, next) {
         try {
             const userProfile = await userService.getAllUsers()
             await res.json(users)
